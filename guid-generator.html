@@ -1,0 +1,20 @@
+﻿<link rel="import" href="../polymer/polymer.html" />
+<dom-module id="guid-generator">
+    <template>
+        {{guid}}
+    </template>
+    <script>
+        Polymer({
+            is: "guid-generator",
+            properties:{
+                guid: String
+            },
+            numSection: function(){
+                return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+            },
+            ready: function () {
+                this.guid = this.numSection() + this.numSection() + '-' + this.numSection() + '-' + this.numSection() + '-' + this.numSection() + '-' + this.numSection() + this.numSection() + this.numSection();
+                }
+        })
+    </script>
+</dom-module>
